@@ -16,7 +16,6 @@ module.exports = {
           res.status(201).send({ status: 'success', result: result });
         else res.status(500).send({ status: "Error", message: "Device not found" })
       }, error => {
-        console.log(error)
         res.status(500).send({ status: "Error", message: error['_message'] })
       })
   },

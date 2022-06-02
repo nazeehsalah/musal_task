@@ -1,0 +1,70 @@
+<div class="container">
+  <div class="add-area">
+    <app-add-button [text]="'Add Device'" (onclick)="addDevice()"></app-add-button>
+  </div>
+  <div class="gateway-info">
+    <div class="info-item">
+      <span class="text">Serial number :</span>
+      <span class="value">{{gateWayInfo.serial_number}}</span>
+    </div>
+    <div class="info-item">
+      <span class="text">Name :</span>
+      <span class="value">{{gateWayInfo.name}}</span>
+    </div>
+    <div class="info-item">
+      <span class="text">IPv4 :</span>
+      <span class="value">{{gateWayInfo.ipV4}}</span>
+    </div>
+  </div>
+  <div class="title">
+    <span>Devices List</span>
+  </div>
+  <div class="mat-elevation-z8">
+    <div class="gateways-table">
+      <div *ngIf="devices.length==0" class="no-data">
+        No data available
+      </div>
+      <table mat-table *ngIf="devices.length>0" [dataSource]="devices" class="example-table" matSort matSortActive="created" matSortDisableClear
+        matSortDirection="desc">
+        <!-- Number Column -->
+        <ng-container matColumnDef="uid">
+          <th mat-header-cell *matHeaderCellDef>UID</th>
+          <td mat-cell *matCellDef="let row">{{row.uid}}</td>
+        </ng-container>
+
+        <!-- Title Column -->
+        <ng-container matColumnDef="vendor">
+          <th mat-header-cell *matHeaderCellDef>Vendor</th>
+          <td mat-cell *matCellDef="let row">{{row.vendor}}</td>
+        </ng-container>
+
+        <!-- State Column -->
+        <ng-container matColumnDef="status">
+          <th mat-header-cell *matHeaderCellDef>Status</th>
+          <td mat-cell *matCellDef="let row">{{row.status}}</td>
+        </ng-container>
+        <ng-container matColumnDef="created_date">
+          <th mat-header-cell *matHeaderCellDef>Created date</th>
+          <td mat-cell *matCellDef="let row">{{row.created_date | date}}</td>
+        </ng-container>
+        <ng-container matColumnDef="actions">
+          <th mat-header-cell *matHeaderCellDef>Actions</th>
+          <td mat-cell *matCellDef="let row" class="less-width">
+            <div class="action-container">
+              <app-action-button matIcon="edit" (onclick)="editDevice(row)"></app-action-button>
+              <app-action-button matIcon="delete" (onclick)="deleteDevice(row)"></app-action-button>
+            </div>
+          </td>
+        </ng-container>
+
+        <!-- Created Column -->
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+    </div>
+
+    <!-- <mat-paginator [length]="resultsLength" [pageSize]="30" aria-label="Select page of GitHub search results">
+    </mat-paginator> -->
+  </div>
+</div>

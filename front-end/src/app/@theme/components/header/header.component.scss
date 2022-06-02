@@ -1,0 +1,33 @@
+.mat-toolbar {
+  -webkit-box-shadow: 0 8px 6px -6px #999;
+  -moz-box-shadow: 0 8px 6px -6px #999;
+  box-shadow: 0 8px 6px -6px #999;
+  background-color: #fff;
+  height: 120px;
+  padding: 0 4rem;
+  .nav-list {
+    list-style: none;
+    margin-left: 3rem;
+    li {
+      color: #000;
+      font-size: 1rem;
+      font-weight: 400;
+      cursor: pointer;
+    }
+  }
+  img {
+    width: 96px;
+    height: 96px;
+  }
+  @media screen and (max-width: 768px) {
+    padding: 0 2rem;
+    height: 60px;
+    .nav-list {
+      margin-left: 0rem;
+    }
+    img {
+      height: 48px;
+      width: 48px;
+    }
+  }
+}

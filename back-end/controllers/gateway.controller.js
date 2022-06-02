@@ -9,8 +9,10 @@ module.exports = {
       res.status(200).send({ status: 'success', result: result })
     })
   },
-  getOne: (req, res) => {
+  getOne: (req, res, next) => {
     Gateway.findById(req.params.gatewayId, (err, result) => {
+      console.log(result)
+      if (!result) res.status(500).send({ status: "Error", message: "Requested Gateway not found" })
       if (err) return next(err)
       res.status(200).send({ status: 'success', result: result })
     })
@@ -47,7 +49,8 @@ module.exports = {
         res.status(500).send({ status: "Error", message: error['_message'] })
       })
   },
-  delete: (req, res) => {
+  delete: async (req, res) => {
+    await Device.deleteMany({ gateway: req.params.gatewayId })
     Gateway.deleteOne({ _id: req.params.gatewayId }, (err, result) => {
       if (err) return next(err);
       res.status(200).send({ status: 'success', result: result });
@@ -68,6 +71,7 @@ module.exports = {
         .then(result => {
           res.status(201).send({ status: 'success', result: result });
         }, error => {
+          console.log(error)
           res.status(500).send({ status: "Error", message: error['_message'] })
         })
     }

@@ -1,0 +1,18 @@
+.mat-dialog-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
+}
+.mat-stroked-button {
+  border: 1px solid #3896ab;
+  padding: 0.5rem 0.75rem;
+  line-height: 150%;
+}
+.cancel {
+  color: #3896ab;
+}
+.confirm {
+  color: #fff;
+  background-color: #3896ab;
+}

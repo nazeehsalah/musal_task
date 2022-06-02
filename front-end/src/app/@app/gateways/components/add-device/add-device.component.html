@@ -1,0 +1,25 @@
+<h1 mat-dialog-title class="text-center">Add new device</h1>
+<div mat-dialog-content class="text-center">
+  <form [formGroup]="deviceForm">
+    <mat-form-field class="mat-input" appearance="fill">
+      <mat-label>Device UID</mat-label>
+      <input formControlName="uid" matInput type="text">
+    </mat-form-field>
+    <mat-form-field class="mat-input" appearance="fill">
+      <mat-label>Device vendor</mat-label>
+      <input formControlName="vendor" matInput type="text">
+    </mat-form-field>
+    <mat-form-field class="mat-input" appearance="fill">
+      <mat-label>Choose status</mat-label>
+      <mat-select formControlName="status">
+        <mat-option value="online">Online</mat-option>
+        <mat-option value="offline">offline</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </form>
+</div>
+<div mat-dialog-actions class="mat-dialog-actions">
+  <button mat-stroked-button (click)="close()" class="cancel">Cancel</button>
+  <button mat-stroked-button [disabled]="deviceForm.invalid" type="submit" (click)="submit()"
+    class="confirm">Submit</button>
+</div>

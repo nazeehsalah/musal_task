@@ -1,0 +1,8 @@
+<app-header></app-header>
+<div class="page-content">
+  <ng-content select="router-outlet"></ng-content>
+</div>
+<app-footer></app-footer>
+<div class="spinner" *ngIf="spinner">
+  <mat-spinner></mat-spinner>
+</div>

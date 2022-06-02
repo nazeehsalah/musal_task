@@ -1,0 +1,52 @@
+<div class="gateway-list">
+  <div class="add-area">
+    <app-add-button [text]="'Add Gateway'" (onclick)="addGateway()"></app-add-button>
+  </div>
+  <div class="gateway-items">
+    <div class="mat-elevation-z8">
+      <div *ngIf="gatewaysList.length==0" class="no-data">
+        No data available
+      </div>
+      <div class="gateways-table" *ngIf="gatewaysList.length>0">
+        <table mat-table [dataSource]="gatewaysList" class="example-table" matSort matSortActive="created"
+          matSortDisableClear matSortDirection="desc">
+          <!-- Number Column -->
+          <ng-container matColumnDef="serial_number">
+            <th mat-header-cell *matHeaderCellDef>Serial Number</th>
+            <td mat-cell *matCellDef="let row">{{row.serial_number}}</td>
+          </ng-container>
+
+          <!-- Title Column -->
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef>name</th>
+            <td mat-cell *matCellDef="let row">{{row.name}}</td>
+          </ng-container>
+
+          <!-- State Column -->
+          <ng-container matColumnDef="ipV4">
+            <th mat-header-cell *matHeaderCellDef>ipV4</th>
+            <td mat-cell *matCellDef="let row">{{row.ipV4}}</td>
+          </ng-container>
+          <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef>Actions</th>
+            <td mat-cell *matCellDef="let row">
+              <div class="action-container">
+                <app-action-button matIcon="visibility" (onclick)="view(row)"></app-action-button>
+                <app-action-button matIcon="edit" (onclick)="edit(row)"></app-action-button>
+                <app-action-button matIcon="delete" (onclick)="deleteGateway(row)"></app-action-button>
+              </div>
+            </td>
+          </ng-container>
+
+          <!-- Created Column -->
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+      </div>
+
+      <!-- <mat-paginator [length]="resultsLength" [pageSize]="30" aria-label="Select page of GitHub search results">
+      </mat-paginator> -->
+    </div>
+  </div>
+</div>

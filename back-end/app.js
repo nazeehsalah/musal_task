@@ -14,6 +14,9 @@ app.use(cors());
 dotenv.config();
 
 /* routing area */
+app.get("/", (req, res) => {
+  res.status(200).send("server running")
+})
 app.use("/api/gateways", GatewayRoutes)
 app.use("/api/devices", DevicesRoutes);
 app.use((req, res, next) => {

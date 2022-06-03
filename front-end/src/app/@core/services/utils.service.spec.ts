@@ -1,12 +1,15 @@
 /* tslint:disable:no-unused-variable */
 
 import { TestBed, async, inject } from '@angular/core/testing';
+import { MatDialogModule } from '@angular/material/dialog';
+import { ToastrModule, ToastrService } from 'ngx-toastr';
 import { UtilsService } from './utils.service';
 
-describe('Service: Global', () => {
+describe('Service: Utils', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [UtilsService]
+      providers: [UtilsService,ToastrService],
+      imports: [ToastrModule.forRoot(), MatDialogModule]
     });
   });
 

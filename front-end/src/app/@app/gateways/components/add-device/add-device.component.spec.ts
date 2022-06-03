@@ -4,6 +4,11 @@ import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
 import { AddDeviceComponent } from './add-device.component';
+import { FormBuilder } from '@angular/forms';
+import { DeviceService } from '@app/gateways/services/device.service';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { ToastrModule } from 'ngx-toastr';
+import { MatDialogModule, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 describe('AddDeviceComponent', () => {
   let component: AddDeviceComponent;
@@ -11,9 +16,20 @@ describe('AddDeviceComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AddDeviceComponent ]
+      declarations: [AddDeviceComponent],
+      providers: [
+        FormBuilder,
+        DeviceService,
+        { provide: MAT_DIALOG_DATA, useValue: {} },
+        { provide: MatDialogRef, useValue: {} }
+      ],
+      imports: [
+        HttpClientTestingModule,
+        ToastrModule.forRoot(),
+        MatDialogModule],
     })
-    .compileComponents();
+
+      .compileComponents();
   }));
 
   beforeEach(() => {

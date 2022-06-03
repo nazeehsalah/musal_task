@@ -4,6 +4,9 @@ import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
 import { MainLayoutComponent } from './main-layout.component';
+import { UtilsService } from '@core/services/utils.service';
+import { ToastrModule } from 'ngx-toastr';
+import { MatDialogModule } from '@angular/material/dialog';
 
 describe('MainLayoutComponent', () => {
   let component: MainLayoutComponent;
@@ -11,7 +14,9 @@ describe('MainLayoutComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [MainLayoutComponent]
+      declarations: [MainLayoutComponent],
+      imports: [ToastrModule.forRoot(),MatDialogModule],
+      providers:[UtilsService]
     })
       .compileComponents();
   }));

@@ -4,9 +4,9 @@
   "description": "Musala Soft Software Engineer task",
   "main": "app.js",
   "scripts": {
-    "test": "echo \\\"Error: no test specified\\\" && exit 1",
     "dev": "nodemon server.js",
-    "seeder": "node ./models/mongoSeed.js"
+    "seeder": "node ./seeder/index.js",
+    "test": "node ./seeder/index.js;jest test"
   },
   "author": "Nazeeh Salah",
   "license": "ISC",
@@ -18,6 +18,12 @@
     "mongoose": "^6.3.4"
   },
   "devDependencies": {
-    "nodemon": "^2.0.16"
+    "babel-jest": "^28.1.0",
+    "jest": "^28.1.0",
+    "nodemon": "^2.0.16",
+    "supertest": "^6.2.3"
+  },
+  "jest": {
+    "testEnvironment": "node"
   }
 }

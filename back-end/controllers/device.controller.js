@@ -2,7 +2,7 @@ const db = require("../models/index")
 const Device = db.models.Device
 module.exports = {
   getOne: (req, res) => {
-    Device.findById(req.params.deviceId, (err, result) => {
+    Device.findById(req.params.deviceId, (err, result, next) => {
       if (err) return next(err)
       if (!result)
         res.status(500).send({ status: 'Error', result: "Device not found!" })
@@ -19,7 +19,7 @@ module.exports = {
         res.status(500).send({ status: "Error", message: error['_message'] })
       })
   },
-  delete: (req, res) => {
+  delete: (req, res, next) => {
     Device.deleteOne({ _id: req.params.deviceId }, (err, result) => {
       if (err) return next(err);
       res.status(200).send({ status: 'success', result: result });

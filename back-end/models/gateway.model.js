@@ -1,7 +1,7 @@
 const mongoose = require("mongoose")
 const Schema = mongoose.Schema
 const gatewaySchema = new Schema({
-  serial_number: { unique: true, type: String },
+  serial_number: { unique: true, type: String, index: true },
   name: { type: String, required: true },
   ipV4: { type: String, required: true },
 })

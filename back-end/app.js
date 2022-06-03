@@ -22,13 +22,13 @@ app.use("/api/devices", DevicesRoutes);
 app.use((req, res, next) => {
   next(httpError(404));
 });
-/* database connection */
-db.dbHelper.connectToDb(process.env.MONGO_URL)
-  .then(res => {
-    console.log("connected")
-  })
-
-/* server listener */
-app.listen(process.env.PORT || 4000, () => {
-  console.log("Server running on port " + process.env.PORT || 4000);
-});
+app.init = async () => {
+  app.listen(process.env.PORT || 4000, () => {
+    console.log("Server running on", process.env.PORT || 4000)
+  });
+  db.dbHelper.connectToDb(process.env.MONGO_URL)
+    .then(res => {
+      console.log("connected")
+    })
+}
+module.exports = app

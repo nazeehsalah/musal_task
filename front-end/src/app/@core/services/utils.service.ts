@@ -4,7 +4,6 @@ import { ToastrService } from 'ngx-toastr';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { DeleteConfirmComponent } from '@shared/delete-confirm/delete-confirm.component';
 import { DeletePopup } from '@core/interfaces/deletePopup';
-
 @Injectable({
   providedIn: 'root'
 })
@@ -13,9 +12,7 @@ export class UtilsService {
   constructor(
     private toastr: ToastrService,
     public dialog: MatDialog
-  ) {
-
-  }
+  ) { }
   showSpinner() {
     this.spinner.next(true)
   }

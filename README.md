@@ -82,7 +82,7 @@ https://documenter.getpostman.com/view/4580375/Uz5DocAG#64ddb4b1-1d56-4cb5-b1d9-
 
 # Auto build front-end and run back-end server
 
-run `./back_deploy.sh`
+run `./all_deploy.sh`
 
 # To deploy front-end
 
